@@ -9,9 +9,7 @@ app.use(express.json({ limit: "100kb" }));
 // app.get("/", (request, response) => {
 //   response.send("Hello");
 // });
-server.listen(8080, "0.0.0.0", () =>
-  console.log("Server started at port 8080")
-);
+server.listen(80);
 const wss = new WebSocket.Server({ server: server, path: "/ws" });
 
 app.post("/api", (req, res) => {
@@ -19,6 +17,10 @@ app.post("/api", (req, res) => {
   console.log(data);
   res.json({ status: "success" });
   em.emit("sendData");
+});
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 wss.on("connection", ws => {
