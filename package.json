@@ -1,0 +1,17 @@
+{
+  "name": "espertoswitch",
+  "version": "1.0.0",
+  "description": "wifi switch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "m374h",
+  "license": "ISC",
+  "dependencies": {
+    "events": "^3.0.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "ws": "^7.1.2"
+  }
+}
