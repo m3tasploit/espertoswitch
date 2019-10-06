@@ -4,12 +4,13 @@ const app = express();
 const server = http.createServer(app);
 const WebSocket = require("ws");
 const events = require("events");
+const port = process.env.PORT || 3000;
 const em = new events.EventEmitter();
 app.use(express.json({ limit: "100kb" }));
 // app.get("/", (request, response) => {
 //   response.send("Hello");
 // });
-server.listen(80);
+server.listen(port);
 const wss = new WebSocket.Server({ server: server, path: "/ws" });
 
 app.post("/api", (req, res) => {
