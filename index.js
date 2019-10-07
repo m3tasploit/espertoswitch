@@ -15,7 +15,6 @@ server.listen(port);
 const wss = new WebSocket.Server({ server: server, path: "/ws" });
 
 app.post("/api", (req, res) => {
-  throw new Error("BROKEN");
   data = req.body;
   console.log(data);
   res.json({ status: "success" });
@@ -23,7 +22,6 @@ app.post("/api", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  throw new Error("BROKEN");
   res.send("Hello World!");
 });
 
