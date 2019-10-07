@@ -1,4 +1,3 @@
-require("dotenv").config();
 import express, { json } from "express";
 import { createServer } from "http";
 const app = express();
