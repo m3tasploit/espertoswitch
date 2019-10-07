@@ -9,10 +9,8 @@ const em = new events.EventEmitter();
 console.log(process.env.PORT);
 const port = process.env.PORT || 3000;
 
-app.use(json({ limit: "100kb" }));
-// app.get("/", (request, response) => {
-//   response.send("Hello");
-// });
+app.use(express.json({ limit: "100kb" }));
+
 server.listen(port);
 const wss = new Server({ server: server, path: "/ws" });
 
