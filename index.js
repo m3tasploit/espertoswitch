@@ -1,17 +1,18 @@
-const express = require("express");
-const http = require("http");
+require("dotenv").config();
+import express, { json } from "express";
+import { createServer } from "http";
 const app = express();
-const server = http.createServer(app);
-const WebSocket = require("ws");
-const events = require("events");
+const server = createServer(app);
+import { Server } from "ws";
+import { EventEmitter } from "events";
 const port = process.env.PORT || 3000;
-const em = new events.EventEmitter();
-app.use(express.json({ limit: "100kb" }));
+const em = new EventEmitter();
+app.use(json({ limit: "100kb" }));
 // app.get("/", (request, response) => {
 //   response.send("Hello");
 // });
 server.listen(port);
-const wss = new WebSocket.Server({ server: server, path: "/ws" });
+const wss = new Server({ server: server, path: "/ws" });
 
 app.post("/api", (req, res) => {
   data = req.body;
@@ -29,6 +30,7 @@ wss.on("connection", ws => {
   ws.on("message", message => {
     console.log(`received: ${message}`);
   });
+  ws.on("close", () => console.log("Client disconnected"));
   em.on("sendData", () => {
     ws.send(data.cmd);
   });
