@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json({ limit: "100kb" }));
 
 server.listen(port);
-const wss = new WebSocket.Server({ server: server, path: "/ws" });
+const wss = new WebSocket.Server({ server: server, path: "/" });
 
 app.post("/api", (req, res) => {
   data = req.body;
