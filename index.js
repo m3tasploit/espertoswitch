@@ -1,12 +1,14 @@
-import express, { json } from "express";
-import { createServer } from "http";
-import { Server } from "ws";
-import { EventEmitter } from "events";
+const express = require("express");
+const http = require("http");
 const app = express();
-const server = createServer(app);
+const server = http.createServer(app);
+const WebSocket = require("ws");
+const events = require("events");
+const em = new events.EventEmitter();
+
 console.log(process.env.PORT);
 const port = process.env.PORT || 3000;
-const em = new EventEmitter();
+
 app.use(json({ limit: "100kb" }));
 // app.get("/", (request, response) => {
 //   response.send("Hello");
