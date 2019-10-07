@@ -1,9 +1,10 @@
 import express, { json } from "express";
 import { createServer } from "http";
-const app = express();
-const server = createServer(app);
 import { Server } from "ws";
 import { EventEmitter } from "events";
+const app = express();
+const server = createServer(app);
+console.log(process.env.PORT);
 const port = process.env.PORT || 3000;
 const em = new EventEmitter();
 app.use(json({ limit: "100kb" }));
@@ -14,6 +15,7 @@ server.listen(port);
 const wss = new Server({ server: server, path: "/ws" });
 
 app.post("/api", (req, res) => {
+  throw new Error("BROKEN");
   data = req.body;
   console.log(data);
   res.json({ status: "success" });
@@ -21,6 +23,7 @@ app.post("/api", (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  throw new Error("BROKEN");
   res.send("Hello World!");
 });
 
