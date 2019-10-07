@@ -5,7 +5,7 @@ import { EventEmitter } from "events";
 const app = express();
 const server = createServer(app);
 console.log(process.env.PORT);
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const em = new EventEmitter();
 app.use(json({ limit: "100kb" }));
 // app.get("/", (request, response) => {
